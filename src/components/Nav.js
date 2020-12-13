@@ -5,7 +5,7 @@ function Nav(){
     return(
         <>  
         <center> 
-            <h1><Link to="/"> STAR WARS STARSHIPS</Link></h1>
+            <button><Link to="/"> STAR WARS STARSHIPS</Link></button>
 
         </center>
         </>
