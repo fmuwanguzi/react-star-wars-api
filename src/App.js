@@ -1,11 +1,12 @@
 import { BrowserRouter, Route } from 'react-router-dom'
 import React, { useState, useEffect } from 'react';
 import { Dimmer, Loader } from 'semantic-ui-react'
-import StartshipPage from './components/StarshipPage';
+import StarshipPage from './components/StarshipPage';
 import Nav from './components/Nav';
 
+
 import './App.css';
-import { Container } from 'semantic-ui-react';
+
 
 function App() {
   const [starships, setStarships] = useState([]); // set to an empty array
@@ -16,10 +17,10 @@ function App() {
       let res = await fetch('https://swapi.dev/api/starships/?format=json');
       let data = await res.json();
       setStarships(data.results)
+      setLoading(false);
     }
 
     fetchStarships();
-    setLoading(false);
 
   }, [])
   //testing to make sure you are fetching the data
@@ -36,11 +37,11 @@ function App() {
        <Loader inverted>Loading</Loader>
      </Dimmer>
    ) : (
-     
-     <Route exact path="/">
-       <StartshipPage data={starships}/>
-     </Route>
-   ) }
+    <Route
+    exact path="/">
+    <StarshipPage info={starships} />
+    </Route>
+   )}
    </div>
    </BrowserRouter>
   );
